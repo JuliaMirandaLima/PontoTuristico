@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foz do Iguaçu - Turismo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="stilo.css" />
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">🌿 Foz do Iguaçu</a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menuNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pontos">Pontos Turísticos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dicas">Dicas</a></li>
+        </ul>
+
+        <div class="d-flex mt-2 mt-lg-0">
+          <input
+            class="form-control"
+            type="search"
+            id="campoBusca"
+            placeholder="Buscar atração..."
+            aria-label="Buscar"
+          />
+          <button class="btn-search" onclick="pesquisar()">🔍</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="resultado-pesquisa">
+    <p id="texto-resultado"></p>
+  </div>
+
+  <div id="carouselHero" class="carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselHero" data-bs-slide-to="2"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Iguazu_Argentina.jpg/1280px-Iguazu_Argentina.jpg" alt="Cataratas do Iguaçu" />
+        <div class="carousel-caption">
+          <h2>Bem-vindo a Foz do Iguaçu</h2>
+          <p>Uma das maiores maravilhas naturais do mundo</p>
+          <a href="#pontos" class="btn btn-destaque mt-2">Explorar atrações</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Parque_das_Aves_-_Foz_do_Igua%C3%A7u.jpg/1280px-Parque_das_Aves_-_Foz_do_Igua%C3%A7u.jpg" alt="Parque das Aves" />
+        <div class="carousel-caption">
+          <h2>Parque das Aves</h2>
+          <p>Um paraíso para os amantes da natureza</p>
+          <a href="#pontos" class="btn btn-destaque mt-2">Ver mais</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Itaipu_dam_front.jpg/1280px-Itaipu_dam_front.jpg" alt="Usina de Itaipu" />
+        <div class="carousel-caption">
+          <h2>Usina de Itaipu</h2>
+          <p>Uma das maiores obras de engenharia do mundo</p>
+          <a href="#pontos" class="btn btn-destaque mt-2">Ver mais</a>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <section id="sobre">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-7">
+          <h2>Por que visitar Foz do Iguaçu?</h2>
+          <p style="font-size: 1.1rem; line-height: 1.8rem;">
+            Foz do Iguaçu é uma cidade localizada no extremo oeste do Paraná, famosa mundialmente pelas
+            suas deslumbrantes cataratas e pela rica biodiversidade da região. Além da natureza exuberante,
+            a cidade oferece atrações culturais, tecnológicas e de entretenimento para todos os gostos.
+          </p>
+          <a href="#pontos" class="btn btn-destaque mt-2">Ver os pontos turísticos</a>
+        </div>
+        <div class="col-12 col-md-5 text-center mt-4 mt-md-0">
+          <p style="font-size: 4rem;">🌊🦜🏗️</p>
+          <p style="font-size: 1rem; color: var(--amarelo);">Natureza · Cultura · Engenharia</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pontos">
+    <div class="container">
+      <h2>Principais Pontos Turísticos</h2>
+
+      <div class="row g-4">
+
+        <div class="col-12 col-sm-6 col-lg-4" data-nome="cataratas">
+          <div class="card">
+            <div id="carouselCataratas" class="carousel slide card-carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="imagens/parque3.jpg" alt="Parque das Aves - Tucano"/>
+                </div>
+                <div class="carousel-item">
+                  <img src="imagens/parque2.jpg" alt="Parque das Aves - Araras" />
+                </div>
+                <div class="carousel-item">
+                  <img src="imagens/parque1.jpg" alt="Parque das Aves - Flamingos"/>
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCataratas" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselCataratas" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <div class="card-body">
+              <span class="badge-tipo">🌿 Natureza</span>
+              <h5 class="card-title">Cataratas do Iguaçu</h5>
+              <p class="card-text">Uma das Sete Maravilhas da Natureza! Com mais de 270 quedas d'água, as cataratas encantam visitantes do mundo inteiro. Patrimônio Natural da UNESCO.</p>
+              <a href="https://www.cataratasdoiguacu.com.br" target="_blank" class="btn btn-destaque btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4" data-nome="parque das aves">
+          <div class="card">
+            <div id="carouselAves" class="carousel slide card-carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Parque_das_Aves_-_Foz_do_Igua%C3%A7u.jpg/640px-Parque_das_Aves_-_Foz_do_Igua%C3%A7u.jpg" alt="Parque das Aves 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Toucan_Parque_das_Aves.jpg/640px-Toucan_Parque_das_Aves.jpg" alt="Parque das Aves 2" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Ara_chloropterus_-Parque_das_Aves%2C_Foz_do_Igua%C3%A7u%2C_Brazil-8.jpg/640px-Ara_chloropterus_-Parque_das_Aves%2C_Foz_do_Igua%C3%A7u%2C_Brazil-8.jpg" alt="Parque das Aves 3" />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselAves" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselAves" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <div class="card-body">
+              <span class="badge-tipo">🦜 Fauna</span>
+              <h5 class="card-title">Parque das Aves</h5>
+              <p class="card-text">Lar de mais de 1.400 aves de 150 espécies diferentes. Um dos parques ornitológicos mais importantes da América Latina.</p>
+              <a href="https://www.parquedasaves.com.br" target="_blank" class="btn btn-destaque btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4" data-nome="usina itaipu hidrelétrica">
+          <div class="card">
+            <div id="carouselItaipu" class="carousel slide card-carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Itaipu_dam_front.jpg/640px-Itaipu_dam_front.jpg" alt="Itaipu 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Itaipu_geral.jpg/640px-Itaipu_geral.jpg" alt="Itaipu 2" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Itaipu_aerea.jpg/640px-Itaipu_aerea.jpg" alt="Itaipu 3" />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselItaipu" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselItaipu" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <div class="card-body">
+              <span class="badge-tipo">⚡ Engenharia</span>
+              <h5 class="card-title">Usina Hidrelétrica de Itaipu</h5>
+              <p class="card-text">Uma das maiores usinas hidrelétricas do mundo! Tours guiados disponíveis para conhecer essa impressionante obra entre Brasil e Paraguai.</p>
+              <a href="https://www.itaipu.gov.br" target="_blank" class="btn btn-destaque btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4" data-nome="marco três fronteiras">
+          <div class="card">
+            <div id="carouselMarco" class="carousel slide card-carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Marco_das_Tres_Fronteiras.jpg/640px-Marco_das_Tres_Fronteiras.jpg" alt="Marco 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Marco_das_Tres_Fronteiras_noite.jpg/640px-Marco_das_Tres_Fronteiras_noite.jpg" alt="Marco 2" />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselMarco" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselMarco" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <div class="card-body">
+              <span class="badge-tipo">🌍 Cultura</span>
+              <h5 class="card-title">Marco das Três Fronteiras</h5>
+              <p class="card-text">Ponto onde se encontram Brasil, Argentina e Paraguai. Marcado por obeliscos nas cores dos três países, à beira do Rio Iguaçu.</p>
+              <a href="#" class="btn btn-destaque btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4" data-nome="roda gigante">
+          <div class="card">
+            <div id="carouselRoda" class="carousel slide card-carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Roda_Gigante_Foz_do_Iguacu.jpg/640px-Roda_Gigante_Foz_do_Iguacu.jpg"
+                    onerror="this.src='https://images.unsplash.com/photo-1575993541750-f7ccf1cae2c6?w=640&q=80'"
+                    alt="Roda Gigante" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1575993541750-f7ccf1cae2c6?w=640&q=80" alt="Roda Gigante 2" />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselRoda" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselRoda" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <div class="card-body">
+              <span class="badge-tipo">🎡 Entretenimento</span>
+              <h5 class="card-title">Roda Gigante de Foz</h5>
+              <p class="card-text">Uma das maiores rodas gigantes do Brasil! Vista panorâmica incrível da cidade e da região ao redor.</p>
+              <a href="#" class="btn btn-destaque btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6 col-lg-4" data-nome="dreams park show">
+          <div class="card">
+            <div id="carouselDreams" class="carousel slide card-carousel" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=640&q=80" alt="Dreams Park 1" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=640&q=80" alt="Dreams Park 2" />
+                </div>
+                <div class="carousel-item">
+                  <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=640&q=80" alt="Dreams Park 3" />
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselDreams" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselDreams" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+            <div class="card-body">
+              <span class="badge-tipo">🎭 Shows</span>
+              <h5 class="card-title">Dreams Park Show</h5>
+              <p class="card-text">Shows ao vivo, espetáculos culturais e atrações para toda a família. Uma noite inesquecível em Foz do Iguaçu!</p>
+              <a href="#" class="btn btn-destaque btn-sm">Saiba mais</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="dicas">
+    <div class="container">
+      <h2>🧳 Dicas para sua Visita</h2>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="icone-dica">☀️</span>
+              Use protetor solar e roupas leves – o clima é quente e úmido.
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">🌧️</span>
+              Leve capa de chuva para visitar as Cataratas – você vai se molhar!
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">🎟️</span>
+              Compre os ingressos online com antecedência para evitar filas.
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">📅</span>
+              Reserve pelo menos 3 dias para aproveitar todos os pontos turísticos.
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">🌤️</span>
+              A melhor época para visitar é entre abril e novembro (clima mais ameno).
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">🪪</span>
+              Traga documentos em dia – o Marco das Três Fronteiras fica próximo a fronteiras internacionais.
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">👟</span>
+              Use tênis ou calçados confortáveis – há muito caminho a percorrer nas atrações.
+            </li>
+            <li class="list-group-item">
+              <span class="icone-dica">📸</span>
+              Não esqueça a câmera ou deixe o celular carregado – as paisagens são inesquecíveis!
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="footer-nome">Julia Miranda Lima</p>
+    <p class="footer-materia">Site desenvolvido para a matéria de Programação para a Internet</p>
+    <div class="footer-linha"></div>
+    <p class="footer-copy">© 2025 · Foz do Iguaçu Turismo · Todos os direitos reservados</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    function pesquisar() {
+      const termo = document.getElementById('campoBusca').value.trim().toLowerCase();
+      const resultado = document.getElementById('resultado-pesquisa');
+      const textoResultado = document.getElementById('texto-resultado');
+
+      if (termo === '') {
+        resultado.style.display = 'none';
+        return;
+      }
+
+      // Lista de atrações para comparar
+      const atracoes = [
+        { nome: 'Cataratas do Iguaçu', palavras: ['cataratas', 'iguaçu', 'queda', 'agua'] },
+        { nome: 'Parque das Aves', palavras: ['parque', 'aves', 'pássaro', 'ave', 'tucano', 'arara'] },
+        { nome: 'Usina Hidrelétrica de Itaipu', palavras: ['usina', 'itaipu', 'hidrelétrica', 'energia'] },
+        { nome: 'Marco das Três Fronteiras', palavras: ['marco', 'fronteiras', 'tres', 'três', 'argentina', 'paraguai'] },
+        { nome: 'Roda Gigante', palavras: ['roda', 'gigante'] },
+        { nome: 'Dreams Park Show', palavras: ['dreams', 'park', 'show', 'espetáculo'] },
+      ];
+
+      const encontradas = atracoes
+        .filter(a => a.palavras.some(p => p.includes(termo) || termo.includes(p)))
+        .map(a => a.nome);
+
+      resultado.style.display = 'block';
+
+      if (encontradas.length > 0) {
+        textoResultado.innerHTML = `🔍 Resultado para "<strong>${termo}</strong>": ${encontradas.join(', ')}`;
+      } else {
+        textoResultado.innerHTML = `🔍 Nenhuma atração encontrada para "<strong>${termo}</strong>". Tente: cataratas, aves, itaipu, marco, roda gigante ou dreams park.`;
+      }
+    }
+
+    // Pesquisar ao apertar Enter
+    document.getElementById('campoBusca').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') pesquisar();
+    });
+  </script>
+
+</body>
+</html>
