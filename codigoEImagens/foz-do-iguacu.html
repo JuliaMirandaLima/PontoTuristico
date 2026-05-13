@@ -28,21 +28,13 @@
           <li class="nav-item"><a class="nav-link" href="#secao-atracoes">Pontos Turísticos</a></li>
           <li class="nav-item"><a class="nav-link" href="#secao-dicas">Dicas</a></li>
         </ul>
-
-        <div class="d-flex mt-2 mt-lg-0">
-          <input class="form-control input-busca" type="search" id="input-busca" placeholder="Buscar atração..." aria-label="Buscar" />
-          <button class="btn-busca-custom" onclick="executarBusca()">🔍</button>
-        </div>
       </div>
     </div>
   </nav>
 
-  <div id="container-resultados">
-    <p id="texto-resultados"></p>
-  </div>
 
   <div id="carrosel-principal" class="carousel slide" data-bs-ride="carousel">
-
+    
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carrosel-principal" data-bs-slide-to="0" class="active"></button>
       <button type="button" data-bs-target="#carrosel-principal" data-bs-slide-to="1"></button>
@@ -383,46 +375,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    function executarBusca() {
-      const termoBusca = document.getElementById('input-busca').value.trim().toLowerCase();
-      const containerResultados = document.getElementById('container-resultados');
-      const textoResultados = document.getElementById('texto-resultados');
-
-      if (termoBusca === '') {
-        containerResultados.style.display = 'none';
-        return;
-      }
-
-      // Dados das atrações para busca
-      const dadosAtracoes = [
-        { nome: 'Cataratas do Iguaçu', palavrasChave: ['cataratas', 'iguaçu', 'queda', 'agua'] },
-        { nome: 'Parque das Aves', palavrasChave: ['parque', 'aves', 'pássaro', 'ave', 'tucano', 'arara'] },
-        { nome: 'Usina Hidrelétrica de Itaipu', palavrasChave: ['usina', 'itaipu', 'hidrelétrica', 'energia'] },
-        { nome: 'Marco das Três Fronteiras', palavrasChave: ['marco', 'fronteiras', 'tres', 'três', 'argentina', 'paraguai'] },
-        { nome: 'Roda Gigante', palavrasChave: ['roda', 'gigante'] },
-        { nome: 'Dreams Park Show', palavrasChave: ['dreams', 'park', 'show', 'espetáculo'] },
-      ];
-
-      const itensEncontrados = dadosAtracoes
-        .filter(item => item.palavrasChave.some(palavra => palavra.includes(termoBusca) || termoBusca.includes(palavra)))
-        .map(item => item.nome);
-
-      containerResultados.style.display = 'block';
-
-      if (itensEncontrados.length > 0) {
-        textoResultados.innerHTML = `🔍 Resultado para "<strong>${termoBusca}</strong>": ${itensEncontrados.join(', ')}`;
-      } else {
-        textoResultados.innerHTML = `🔍 Nenhuma atração encontrada para "<strong>${termoBusca}</strong>". Tente: cataratas, aves, itaipu, marco, roda gigante ou dreams park.`;
-      }
-    }
-
-    // Acionar busca ao apertar Enter
-    document.getElementById('input-busca').addEventListener('keypress', function(evento) {
-      if (evento.key === 'Enter') executarBusca();
-    });
-  </script>
 
 </body>
 </html>
